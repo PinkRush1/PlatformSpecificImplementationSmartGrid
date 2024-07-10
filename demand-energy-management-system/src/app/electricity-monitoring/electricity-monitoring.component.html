@@ -1,0 +1,27 @@
+<div id="dashboard">
+  <h1> Demand Energy Management System</h1>
+  <!-- src/app/line-chart/line-chart.component.html -->
+  <div id="monitor"></div>
+  <div class="child">
+    <canvas #lineChart></canvas>
+  </div>
+
+  <div class="child">
+
+    <div *ngIf="showWarning" id="warning">
+      Warnung: Es sind zu viele Verbraucher im Netz. Nimm Wärmepumpen vom Netz!
+    </div>
+  </div>
+  <div>
+    <h3>Wärmepumpen</h3>
+    <ul>
+      <li class="heatpumpItem" *ngFor="let waermepumpe of heatpumps; let i = index">
+        {{ waermepumpe.name }} - {{ waermepumpe.isOn ? waermepumpe.consumption + ' kWh' : 'Off' }}
+        <button (click)="toggleHeatpump(i)">
+          {{ waermepumpe.isOn ? 'Turn Off' : 'Turn On' }}
+        </button>
+      </li>
+    </ul>
+  </div>
+
+</div>
